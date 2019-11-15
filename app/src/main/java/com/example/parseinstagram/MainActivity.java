@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -63,6 +64,8 @@ protected void onCreate(Bundle savedInstanceState) {
     buttonSubmit.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
+            ProgressBar pb = (ProgressBar) findViewById(R.id.pbLoading);
+            pb.setVisibility(ProgressBar.VISIBLE);
             String description = editImageCaption.getText().toString();
             ParseUser user = ParseUser.getCurrentUser();
             if(photoFile == null || imageToPost.getDrawable() == null){
@@ -71,6 +74,8 @@ protected void onCreate(Bundle savedInstanceState) {
                 return;
             }
             savePost(description,user, photoFile);
+            // run a background job and once complete
+            pb.setVisibility(ProgressBar.INVISIBLE);
         }
     });
 }
@@ -147,9 +152,12 @@ protected void onCreate(Bundle savedInstanceState) {
                 Log.d(TAG, "Success!");
                 editImageCaption.setText("");
                 imageToPost.setImageResource(0);
+                // on some click or some loading we need to wait for...
             }
         });
     }
+
+
 
     private void queryPosts() {
         // Specify which class to query
