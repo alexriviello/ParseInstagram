@@ -16,14 +16,31 @@
         android:adjustViewBounds="false"
         android:contentDescription="@string/logo"
         android:cropToPadding="false"
+        android:keepScreenOn="false"
         app:srcCompat="@drawable/nav_logo_whiteout" />
 
     <EditText
-        android:id="@+id/userNameEntry"
+        android:id="@+id/signupUserName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:hint="@string/username"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/signupEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/email_address"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/signupPhoneNum"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="@string/phone_number"
         android:inputType="text" />
 
     <com.google.android.material.textfield.TextInputLayout
@@ -32,7 +49,7 @@
         app:passwordToggleEnabled="true">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordEntry"
+            android:id="@+id/signupPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/password"
@@ -40,16 +57,9 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-    android:id="@+id/loginButton"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-        style="@style/RectangleButton"
-    android:text="@string/login" />
-
-    <Button
-    android:id="@+id/signupButton"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/sign_up" />
+        android:id="@+id/signupButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/sign_up" />
 
 </LinearLayout>

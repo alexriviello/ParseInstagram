@@ -1,12 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:gravity="fill_vertical"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/instaLogo"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_weight=".2"
+        android:adjustViewBounds="false"
+        android:contentDescription="@string/logo"
+        android:cropToPadding="true"
+        android:fitsSystemWindows="false"
+        app:srcCompat="@drawable/nav_logo_whiteout" />
 
     <ImageView
         android:id="@+id/imageToPost"
@@ -15,24 +27,20 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="1"
         android:contentDescription="@string/picture"
-        tools:srcCompat="@drawable/camera_shadow_fill">
+        tools:srcCompat="@drawable/camera_shadow_fill"></ImageView>
 
-
-    </ImageView>
     <ProgressBar
         android:id="@+id/pbLoading"
-        android:visibility="invisible"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-
-
-    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
+        android:visibility="invisible" />
+
+    <EditText
         android:id="@+id/editTextDescription"
-        android:hint="@string/description">
-    </EditText>
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/description"
+        android:visibility="invisible"></EditText>
 
     <Button
         android:id="@+id/buttonCaptureImage"

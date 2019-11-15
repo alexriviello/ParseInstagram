@@ -9,4 +9,7 @@
     <string name="picture">picture</string>
     <string name="instagram">Instagram</string>
     <string name="logo">Logo</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email_address">email address</string>
+    <string name="phone_number">phone number</string>
 </resources>
