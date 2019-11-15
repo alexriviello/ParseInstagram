@@ -64,7 +64,7 @@ protected void onCreate(Bundle savedInstanceState) {
     buttonSubmit.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            ProgressBar pb = (ProgressBar) findViewById(R.id.pbLoading);
+            ProgressBar pb = findViewById(R.id.pbLoading);
             pb.setVisibility(ProgressBar.VISIBLE);
             String description = editImageCaption.getText().toString();
             ParseUser user = ParseUser.getCurrentUser();
@@ -111,6 +111,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
                 // Load the taken image into a preview
                 imageToPost.setImageBitmap(takenImage);
+                editImageCaption.setVisibility(EditText.VISIBLE); 
             } else { // Result was a failure
                 Toast.makeText(this, "Picture wasn't taken!", Toast.LENGTH_SHORT).show();
             }
