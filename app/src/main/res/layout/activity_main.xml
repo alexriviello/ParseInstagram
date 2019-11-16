@@ -58,4 +58,12 @@
         android:layout_weight=".5"
         android:text="@string/submit" />
 
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/log_out"
+        android:textAlignment="center" />
+
 </LinearLayout>

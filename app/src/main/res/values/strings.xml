@@ -12,4 +12,5 @@
     <string name="sign_up">Sign Up</string>
     <string name="email_address">email address</string>
     <string name="phone_number">phone number</string>
+    <string name="log_out">Log Out</string>
 </resources>

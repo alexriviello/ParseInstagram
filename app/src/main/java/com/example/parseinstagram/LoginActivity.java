@@ -30,7 +30,13 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        if (currentUser != null) {
+            // do stuff with the user
+            goMainActivity();
+        } else {
+            // show the signup or login screen
+        }
         usernameText = findViewById(R.id.userNameEntry);
         passwordText = findViewById(R.id.passwordEntry);
         loginButton = findViewById(R.id.loginButton);

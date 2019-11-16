@@ -1,6 +1,5 @@
 package com.example.parseinstagram;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.FileProvider;
 
@@ -33,9 +32,10 @@ public class MainActivity extends AppCompatActivity {
 
     private final String TAG = "MainActivity";
     private EditText editImageCaption;
-    private Button buttonCaptureImage;
+    private Button captureImageButton;
     private ImageView imageToPost;
-    private Button buttonSubmit;
+    private Button submitButton;
+    private Button logoutButton;
 
     // Camera member variables
     public final String APP_TAG = "MyCustomApp";
@@ -49,19 +49,30 @@ protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     editImageCaption = findViewById(R.id.editTextDescription);
-    buttonCaptureImage = findViewById(R.id.buttonCaptureImage);
+    captureImageButton = findViewById(R.id.buttonCaptureImage);
     imageToPost = findViewById(R.id.imageToPost);
-    buttonSubmit = findViewById(R.id.buttonSubmit);
+    submitButton = findViewById(R.id.buttonSubmit);
+    logoutButton = findViewById(R.id.logoutButton);
 
-    buttonCaptureImage.setOnClickListener(new View.OnClickListener() {
+    captureImageButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             launchCamera();
         }
     });
-    
+
+    logoutButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            ParseUser.logOut();
+            ParseUser currentUser = ParseUser.getCurrentUser();
+            goLogin();
+            Toast.makeText(MainActivity.this, "You are now logged out.", Toast.LENGTH_SHORT).show();
+        }
+    });
+
 //    queryPosts();
-    buttonSubmit.setOnClickListener(new View.OnClickListener() {
+    submitButton.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             ProgressBar pb = findViewById(R.id.pbLoading);
@@ -79,6 +90,14 @@ protected void onCreate(Bundle savedInstanceState) {
         }
     });
 }
+
+    private void goLogin() {
+            Log.d(TAG, "Navigating to LoginActivity");
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+
+        }
 
     private void launchCamera() {
         // create Intent to take a picture and return control to the calling application
