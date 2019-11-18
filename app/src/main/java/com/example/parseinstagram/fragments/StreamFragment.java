@@ -27,8 +27,8 @@ public class StreamFragment extends Fragment {
     public static final String TAG = "StreamFragment";
 
     private RecyclerView rvStream;
-    private PostsAdapter adapter;
-    private List<Post> postList;
+    protected PostsAdapter adapter;
+    protected List<Post> postList;
 
     // onCreateView to inflate the view
     @Nullable
@@ -53,9 +53,11 @@ public class StreamFragment extends Fragment {
         queryPosts();
     }
 
-    private void queryPosts() {
+    protected void queryPosts() {
         ParseQuery<Post> postQuery = new ParseQuery<>(Post.class);
         postQuery.include(Post.KEY_USER);
+        postQuery.setLimit(20);
+        postQuery.addDescendingOrder(Post.KEY_CREATED_AT);
         postQuery.findInBackground(new FindCallback<Post>() {
             @Override
             public void done(List<Post> posts, ParseException e) {

@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import com.example.parseinstagram.fragments.ComposeFragment;
+import com.example.parseinstagram.fragments.ProfileFragment;
 import com.example.parseinstagram.fragments.StreamFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -45,8 +46,7 @@ protected void onCreate(Bundle savedInstanceState) {
                     break;
                 case R.id.action_profile:
                 default:
-                    // TODO swap fragment here
-                    fragment = new ComposeFragment();
+                    fragment = new ProfileFragment();
                     // Toast.makeText(MainActivity.this, "Profile", Toast.LENGTH_SHORT).show();
                     break;
             }

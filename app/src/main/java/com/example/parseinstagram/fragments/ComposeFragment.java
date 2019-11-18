@@ -96,12 +96,12 @@ public class ComposeFragment extends Fragment {
                 pb.setVisibility(ProgressBar.VISIBLE);
                 String description = editImageCaption.getText().toString();
                 ParseUser user = ParseUser.getCurrentUser();
-                if(photoFile == null || imageToPost.getDrawable() == null){
+                if (photoFile == null || imageToPost.getDrawable() == null) {
                     Log.e(TAG, "No photo to submit");
                     Toast.makeText(getContext(), "There is no photo!", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                savePost(description,user, photoFile);
+                savePost(description, user, photoFile);
                 // run a background job and once complete
                 pb.setVisibility(ProgressBar.INVISIBLE);
             }
@@ -112,7 +112,7 @@ public class ComposeFragment extends Fragment {
         Log.d(TAG, "Navigating to LoginActivity");
         Intent intent = new Intent(getContext(), LoginActivity.class); // fragment uses getContext() method to get context
         startActivity(intent);
-       // finish();
+        // finish();
     }
 
     private void launchCamera() {
@@ -161,7 +161,7 @@ public class ComposeFragment extends Fragment {
         File mediaStorageDir = new File(getContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES), TAG);
 
         // Create the storage directory if it does not exist
-        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()){
+        if (!mediaStorageDir.exists() && !mediaStorageDir.mkdirs()) {
             Log.d(TAG, "failed to create directory");
         }
 
@@ -180,7 +180,7 @@ public class ComposeFragment extends Fragment {
         post.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
-                if (e != null){
+                if (e != null) {
                     Log.e(TAG, "Error while saving post");
                     e.printStackTrace();
                     return;
@@ -189,26 +189,6 @@ public class ComposeFragment extends Fragment {
                 editImageCaption.setText("");
                 imageToPost.setImageResource(0);
                 // on some click or some loading we need to wait for...
-            }
-        });
-    }
-
-    private void queryPosts() {
-        // Specify which class to query
-        ParseQuery<Post> postQuery = new ParseQuery<Post>(Post.class);
-        postQuery.include(Post.KEY_USER);
-        postQuery.findInBackground(new FindCallback<Post>() {
-            @Override
-            public void done(List<Post> posts, ParseException e) {
-                if(e != null){
-                    Log.e(TAG, "Error with query");
-                    e.printStackTrace();
-                    return;
-                }
-                for (int i =0; i < posts.size(); i++){
-                    Post post = posts.get(i);
-                    Log.d(TAG, "Post: \"" + post.getDescription() + "\", Username: " + post.getUser().getUsername());
-                }
             }
         });
     }

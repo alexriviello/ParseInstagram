@@ -26,7 +26,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_weight="1"
         android:contentDescription="@string/picture"
-        tools:srcCompat="@drawable/camera_shadow_fill"></ImageView>
+        tools:srcCompat="@drawable/camera_shadow_fill"/>
 
     <ProgressBar
         android:id="@+id/pbLoading"
@@ -35,11 +35,12 @@
         android:visibility="invisible" />
 
     <EditText
+        android:inputType="text"
         android:id="@+id/editTextDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/description"
-        android:visibility="invisible"></EditText>
+        android:visibility="invisible"/>
 
     <Button
         android:id="@+id/buttonCaptureImage"
