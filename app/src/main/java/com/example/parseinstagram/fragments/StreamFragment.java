@@ -1,5 +1,6 @@
 package com.example.parseinstagram.fragments;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.parseinstagram.Post;
 import com.example.parseinstagram.PostsAdapter;
@@ -19,16 +21,19 @@ import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class StreamFragment extends Fragment {
 
     public static final String TAG = "StreamFragment";
-
+    private SwipeRefreshLayout swipeContainer;
     private RecyclerView rvStream;
     protected PostsAdapter adapter;
     protected List<Post> postList;
+    private AsyncTask client;
 
     // onCreateView to inflate the view
     @Nullable
@@ -40,6 +45,10 @@ public class StreamFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         rvStream = view.findViewById(R.id.rvStream);
+        swipeContainer = view.findViewById(R.id.swipeContainer);
+        // Configure the refreshing colors
+        swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright, android.R.color.holo_blue_light, android.R.color.holo_orange_light, android.R.color.holo_red_light);
+        // Setup refresh listener which triggers new data loading
 
         // create the data source
         postList = new ArrayList<>();
@@ -51,6 +60,14 @@ public class StreamFragment extends Fragment {
         rvStream.setLayoutManager(new LinearLayoutManager(getContext()));
 
         queryPosts();
+        swipeContainer.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Log.d(TAG, "Refreshing feed");
+                queryPosts();
+
+            }
+        });
     }
 
     protected void queryPosts() {
@@ -76,4 +93,5 @@ public class StreamFragment extends Fragment {
             };
         });
     }
+
 }
