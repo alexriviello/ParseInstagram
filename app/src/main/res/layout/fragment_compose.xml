@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <LinearLayout
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical">
 
     <ImageView
         android:id="@+id/instaLogo"
@@ -46,7 +50,7 @@
         android:id="@+id/buttonCaptureImage"
         style="@style/RectangleButton"
         android:layout_width="match_parent"
-        android:layout_height="20dp"
+        android:layout_height="wrap_content"
         android:layout_weight=".5"
         android:text="@string/take_picture" />
 
@@ -67,3 +71,4 @@
         android:textAlignment="center" />
 
 </LinearLayout>
+</ScrollView>

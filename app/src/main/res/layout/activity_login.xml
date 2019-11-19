@@ -1,55 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:layout_margin="10dp"
-    android:gravity="center_horizontal|center_vertical"
-    android:orientation="vertical"
-    tools:context=".LoginActivity">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_centerInParent="false"
+    android:layout_centerHorizontal="false"
+    android:layout_centerVertical="false">
 
-    <ImageView
-        android:id="@+id/instaLogo"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:adjustViewBounds="false"
-        android:contentDescription="@string/logo"
-        android:cropToPadding="false"
-        app:srcCompat="@drawable/nav_logo_whiteout" />
-
-    <EditText
-        android:id="@+id/userNameEntry"
+    <LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="@string/username"
-        android:inputType="text" />
+        android:layout_margin="10dp"
+        android:gravity="center_horizontal|center_vertical"
+        android:layout_gravity="center_vertical"
+        android:orientation="vertical"
+        tools:context=".LoginActivity">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:passwordToggleEnabled="true">
+        <ImageView
+            android:id="@+id/instaLogo"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="false"
+            android:contentDescription="@string/logo"
+            android:cropToPadding="false"
+            app:srcCompat="@drawable/nav_logo_whiteout" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/passwordEntry"
+        <EditText
+            android:id="@+id/userNameEntry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/password"
-            android:inputType="textPassword" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:ems="10"
+            android:hint="@string/username"
+            android:inputType="text" />
 
-    <Button
-    android:id="@+id/loginButton"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-        style="@style/RectangleButton"
-    android:text="@string/login" />
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true">
 
-    <Button
-    android:id="@+id/signupButton"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/sign_up" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/passwordEntry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:inputType="textPassword" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-</LinearLayout>
+        <Button
+            android:id="@+id/loginButton"
+            style="@style/RectangleButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/login" />
+
+        <Button
+            android:id="@+id/signupButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/sign_up" />
+
+    </LinearLayout>
+</ScrollView>
