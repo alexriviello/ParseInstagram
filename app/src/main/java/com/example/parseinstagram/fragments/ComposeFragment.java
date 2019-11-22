@@ -45,6 +45,7 @@ public class ComposeFragment extends Fragment {
     private ImageView imageToPost;
     private Button submitButton;
     private Button logoutButton;
+    private ProgressBar pbLoading;
 
     // Camera member variables
     public final String APP_TAG = "MyCustomApp";
@@ -71,6 +72,7 @@ public class ComposeFragment extends Fragment {
         imageToPost = view.findViewById(R.id.imageToPost);
         submitButton = view.findViewById(R.id.buttonSubmit);
         logoutButton = view.findViewById(R.id.logoutButton);
+        pbLoading = view.findViewById(R.id.pbLoading);
 
         captureImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,8 +94,7 @@ public class ComposeFragment extends Fragment {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProgressBar pb = view.findViewById(R.id.pbLoading);
-                pb.setVisibility(ProgressBar.VISIBLE);
+                pbLoading.setVisibility(ProgressBar.VISIBLE);
                 String description = editImageCaption.getText().toString();
                 ParseUser user = ParseUser.getCurrentUser();
                 if (photoFile == null || imageToPost.getDrawable() == null) {
@@ -103,7 +104,7 @@ public class ComposeFragment extends Fragment {
                 }
                 savePost(description, user, photoFile);
                 // run a background job and once complete
-                pb.setVisibility(ProgressBar.INVISIBLE);
+                pbLoading.setVisibility(ProgressBar.INVISIBLE);
             }
         });
     }
