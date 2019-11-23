@@ -42,7 +42,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
-Describe any challenges encountered while building the app.
+Had issues getting the loading bar to show up without crashing the app. Didn't have enough time to implement a profile section. Will return to work on it!
 
 ## Open-source libraries used
 
